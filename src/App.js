@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Banner from './components/Banner';
+import Nav from './components/Nav';
+import Overlay from './components/Overlay';
+import Row from './components/Row';
+import moviesContainer from './movies';
 
 function App() {
+
+  const [isOverlay, setIsOverlay] = useState(false);
+
+  const [selectedTrailer, setSelectedTrailer] = useState("");
+
+  const changeOverlay = (bool) => {
+    setIsOverlay(bool);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {isOverlay && <Overlay selectedTrailer={selectedTrailer} changeOverlay={changeOverlay}/>}
+      <Nav />
+      <Banner />
+
+      {moviesContainer.map(moviesList => (
+        <Row setSelectedTrailer={setSelectedTrailer} changeOverlay={changeOverlay} key={moviesList.id} id={moviesList.id} movies={moviesList.movies} title={moviesList.name} />
+      ))}
     </div>
   );
 }
