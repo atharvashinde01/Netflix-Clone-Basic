@@ -1,31 +1,22 @@
-import { useState } from 'react';
-import './App.css';
-import Banner from './components/Banner';
-import Nav from './components/Nav';
-import Overlay from './components/Overlay';
-import Row from './components/Row';
-import moviesContainer from './movies';
+import "./App.css";
+import NetflixApp from "./components/NetflixApp";
+import NetflixLogin from "./components/NetflixLogin";
+import PrivateRoute from "./components/PrivateRoute";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
-
-  const [isOverlay, setIsOverlay] = useState(false);
-
-  const [selectedTrailer, setSelectedTrailer] = useState("");
-
-  const changeOverlay = (bool) => {
-    setIsOverlay(bool);
-  }
-
   return (
-    <div className="app">
-      {isOverlay && <Overlay selectedTrailer={selectedTrailer} changeOverlay={changeOverlay}/>}
-      <Nav />
-      <Banner />
-
-      {moviesContainer.map(moviesList => (
-        <Row setSelectedTrailer={setSelectedTrailer} changeOverlay={changeOverlay} key={moviesList.id} id={moviesList.id} movies={moviesList.movies} title={moviesList.name} />
-      ))}
-    </div>
+    <Router>
+      <div className="app">
+        <Switch>
+          <PrivateRoute component={NetflixApp} path="/main" />
+          <Route path="/">
+            <NetflixLogin />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
