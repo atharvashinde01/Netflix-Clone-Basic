@@ -14,19 +14,20 @@
 
 .loginLogo__Navbar {
   width: 100%;
-  height: 10vh;
+  /* height: 10vh; */
   margin-left: 3rem;
+  display: flex;
 }
 
 .loginLogo {
     width: 160px;
     object-fit: contain;
-    position: absolute;
+    position: relative;
   }
 
 .netflix__login {
   width: 100%;
-  height: 90vh;
+  /* height: 90vh; */
   color: white;
   display: flex;
   flex-direction: column;
@@ -35,14 +36,16 @@
 }
 
 .netflix__loginContainer {
-  width: 25%;
-  height: 70vh;
+  width: 450px;
+  height: auto;
+  padding: 2rem 0.5rem;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* margin-bottom: 0.5rem; */
 }
 
 .netflix__loginContainer h1 {
@@ -120,20 +123,25 @@
     display: flex;
 }
 
-@media screen and (max-width: 1280px) {
+/* @media screen and (max-width: 1280px) {
   .netflix__loginContainer {
     width: 35%;
   }
-}
+} */
 
-@media screen and (max-width: 950px) {
+/* @media screen and (max-width: 950px) {
   .netflix__loginContainer {
     width: 48%;
   }
-}
+} */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 550px) {
   .netflix__loginContainer {
-    width: 60%;
+    width: 85%;
+  }
+
+  .loginLogo__Navbar{
+    justify-content: center;
+    margin: 0;
   }
 }

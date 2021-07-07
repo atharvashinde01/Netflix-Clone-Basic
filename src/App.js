@@ -11,6 +11,7 @@ function App() {
       <div className="app">
         <Switch>
           <PrivateRoute component={NetflixApp} path="/main" />
+          
           <Route path="/">
             <NetflixLogin />
           </Route>

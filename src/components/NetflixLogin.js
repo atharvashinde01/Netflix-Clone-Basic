@@ -18,28 +18,29 @@ const NetflixLogin = () => {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       };
-      localStorage.setItem(user.email, JSON.stringify(user));
+      localStorage.setItem("IsLoggedIn", true);
+      history.push("/main")
     } else {
       alert("Username and Password should be greater than 2");
     }
   };
 
-  const loginUser = () => {
-    if (
-      emailRef.current.value.length > 2 &&
-      passwordRef.current.value.length > 2
-    ) {
-      const isUser = localStorage.getItem(emailRef.current.value);
-      if (isUser) {
-        localStorage.setItem("IsLoggedIn", true);
-        history.push("/main")
-      } else {
-        localStorage.setItem("IsLoggedIn", false);
-      }
-    } else {
-      alert("Username and Password should be greater than 2 letters");
-    }
-  };
+  // const loginUser = () => {
+  //   if (
+  //     emailRef.current.value.length > 2 &&
+  //     passwordRef.current.value.length > 2
+  //   ) {
+  //     const isUser = localStorage.getItem(emailRef.current.value);
+  //     if (isUser) {
+  //       localStorage.setItem("IsLoggedIn", true);
+  //       history.push("/main")
+  //     } else {
+  //       localStorage.setItem("IsLoggedIn", false);
+  //     }
+  //   } else {
+  //     alert("Username and Password should be greater than 2 letters");
+  //   }
+  // };
 
   return (
     <div className="loginPage">
@@ -60,7 +61,7 @@ const NetflixLogin = () => {
           />
           <input ref={passwordRef} placeholder="Password" type="password" />
 
-          <button onClick={loginUser}>Sign In</button>
+          <button onClick={signUpUser}>Sign In</button>
           <div className="rememberMe">
             <p>
               <input type="radio" /> Remember Me
